@@ -26,7 +26,7 @@ export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
            )}
         </TouchableOpacity>
       </View>
-      <View style={{ flex: 1, width: '100%' }}>
+      <View style={{ flex: 1, width: '100%', maxWidth: 1200, alignSelf: 'center' }}>
         <FlashList
           data={payload}
           keyExtractor={(item: SDUINode) => item.id}

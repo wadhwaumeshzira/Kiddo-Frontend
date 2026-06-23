@@ -11,7 +11,7 @@ export const DynamicCollection = React.memo((props: DynamicCollectionNode['props
   if (!props.children || props.children.length === 0) return null;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { maxWidth: 1200, alignSelf: 'center', width: '100%' }]}>
       <Text style={[styles.title, { color: theme.text }]}>{props.title}</Text>
       <View style={{ height: 200, width: '100%' }}>
         <FlashList
