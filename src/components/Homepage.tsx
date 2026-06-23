@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, SafeAreaView, Text } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import { Renderer } from '../renderer/Renderer';
@@ -7,6 +7,33 @@ import { useTheme } from '../theme/ThemeContext';
 import { useStore } from '../store/useStore';
 import { CategoryNav } from './CategoryNav';
 import { BounceButton } from './BounceButton';
+import Animated, { useSharedValue, useAnimatedStyle, withSequence, withSpring } from 'react-native-reanimated';
+
+// Custom Cart Badge to isolate pop animation
+const CartBadge = ({ count, theme }: { count: number, theme: any }) => {
+  const scale = useSharedValue(1);
+
+  useEffect(() => {
+    if (count > 0) {
+      scale.value = withSequence(
+        withSpring(1.5, { damping: 10 }),
+        withSpring(1, { damping: 12 })
+      );
+    }
+  }, [count]);
+
+  const style = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }]
+  }));
+
+  if (count === 0) return null;
+
+  return (
+    <Animated.View style={[styles.badge, style, { backgroundColor: theme.primary }]}>
+      <Text style={styles.badgeText}>{count}</Text>
+    </Animated.View>
+  );
+};
 
 export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
   const { theme } = useTheme();
@@ -20,12 +47,7 @@ export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
         
         <BounceButton style={styles.cartButton}>
            <Text style={styles.cartIcon}>🛒</Text>
-           {cartItemCount > 0 && (
-             <View style={[styles.badge, { backgroundColor: theme.primary }]}>
-                <Text style={styles.badgeText}>{cartItemCount}</Text>
-             </View>
-           )}
-           {/* Section 10 Mascot integration */}
+           <CartBadge count={cartItemCount} theme={theme} />
            <Text style={styles.mascot}>🐻</Text>
         </BounceButton>
       </View>
@@ -89,7 +111,7 @@ const styles = StyleSheet.create({
     right: -10,
     width: 24,
     height: 24,
-    borderRadius: 12, // soft rounded
+    borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,

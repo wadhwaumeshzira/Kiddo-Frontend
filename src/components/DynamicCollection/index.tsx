@@ -4,6 +4,7 @@ import { FlashList } from '@shopify/flash-list';
 import { Renderer } from '../../renderer/Renderer';
 import { DynamicCollectionNode } from '../../types/SDUITypes';
 import { useTheme } from '../../theme/ThemeContext';
+import Animated, { FadeInUp } from 'react-native-reanimated';
 
 export const DynamicCollection = React.memo((props: DynamicCollectionNode['props']) => {
   const { theme } = useTheme();
@@ -11,9 +12,9 @@ export const DynamicCollection = React.memo((props: DynamicCollectionNode['props
   if (!props.children || props.children.length === 0) return null;
 
   return (
-    <View style={[styles.container, { maxWidth: 1200, alignSelf: 'center', width: '100%' }]}>
+    <Animated.View entering={FadeInUp.duration(500).springify()} style={[styles.container, { maxWidth: 1200, alignSelf: 'center', width: '100%' }]}>
       <Text style={[styles.title, { color: theme.text }]}>{props.title}</Text>
-      <View style={{ height: 280, width: '100%' }}>
+      <View style={{ height: 280, width: '100%', overflow: 'hidden' }}>
         <FlashList
           data={props.children}
           horizontal
@@ -28,13 +29,14 @@ export const DynamicCollection = React.memo((props: DynamicCollectionNode['props
           )}
         />
       </View>
-    </View>
+    </Animated.View>
   );
 });
 
 const styles = StyleSheet.create({
   container: {
     marginVertical: 16,
+    overflow: 'hidden', // Prevents any horizontal leakage
   },
   title: {
     fontSize: 26,

@@ -30,15 +30,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginVertical: 16,
     height: 250,
-    borderRadius: 24, // Section 10 standard
+    borderRadius: 24, 
     shadowOffset: { width: 0, height: 16 },
-    shadowOpacity: 0.1, // Soft deep shadow
+    shadowOpacity: 0.1, 
     shadowRadius: 24,
     elevation: 8,
   },
   fullWidthContainer: {
     width: '100%',
-    height: 380,
+    height: undefined, // Let aspectRatio drive it!
+    aspectRatio: 2.5, // Perfectly scaled bounding box regardless of viewport width
     marginHorizontal: 0,
     marginVertical: 0,
     marginBottom: 24,
