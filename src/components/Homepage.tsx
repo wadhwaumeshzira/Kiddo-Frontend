@@ -44,7 +44,14 @@ export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       <View style={[styles.header, { borderBottomColor: theme.secondary }]}>
-        <Text style={styles.headerText}>Kiddo</Text>
+        <View style={styles.titleContainer}>
+          <Text style={[styles.headerLetter, { color: '#FF6B6B', transform: [{ rotate: '-4deg' }] }]}>K</Text>
+          <Text style={[styles.headerLetter, { color: '#4ECDC4', transform: [{ rotate: '3deg' }, { translateY: -2 }] }]}>i</Text>
+          <Text style={[styles.headerLetter, { color: '#F4D03F', transform: [{ rotate: '-2deg' }] }]}>d</Text>
+          <Text style={[styles.headerLetter, { color: '#FF9F1C', transform: [{ rotate: '4deg' }, { translateY: 2 }] }]}>d</Text>
+          <Text style={[styles.headerLetter, { color: '#A593E0', transform: [{ rotate: '-3deg' }] }]}>o</Text>
+          <Text style={styles.titleIcon}>✨</Text>
+        </View>
         
         <BounceButton style={styles.cartButton} onPress={() => setIsCartOpen(true)}>
            <Text style={styles.cartIcon}>🛒</Text>
@@ -93,14 +100,28 @@ const styles = StyleSheet.create({
     shadowRadius: 16,
     zIndex: 10,
   },
-  headerText: {
-    fontSize: 42,
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 2,
+  },
+  headerLetter: {
+    fontSize: 48,
     fontFamily: 'Baloo 2-Bold',
-    color: '#FF6B6B',
-    textShadowColor: 'rgba(255, 107, 107, 0.15)',
-    textShadowOffset: { width: 0, height: 4 },
+    textShadowColor: 'rgba(0, 0, 0, 0.08)',
+    textShadowOffset: { width: 0, height: 3 },
+    textShadowRadius: 6,
+    letterSpacing: -1,
+    marginHorizontal: 0.5,
+  },
+  titleIcon: {
+    fontSize: 26,
+    marginLeft: 6,
+    transform: [{ translateY: -12 }],
+    textShadowColor: 'rgba(244, 208, 63, 0.6)',
+    textShadowOffset: { width: 0, height: 2 },
     textShadowRadius: 8,
-    letterSpacing: 1,
   },
   cartButton: {
     position: 'absolute',
