@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFEB3B', // Brighter, cleaner yellow
     width: '100%',
-    paddingVertical: 14, 
+    paddingVertical: 8, 
     borderBottomWidth: 3,
     borderBottomColor: '#FDD835',
     elevation: 8,
@@ -85,18 +85,18 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   catItem: {
-    marginHorizontal: 24, // Increased from 16 to 24
+    marginHorizontal: 20, // slightly reduced to fit smaller icons better
     alignItems: 'center',
     width: 60,
   },
   iconCircle: {
-    width: 56,
-    height: 56,
-    borderRadius: 20, // Squircle!
+    width: 48,
+    height: 48,
+    borderRadius: 16, // Squircle!
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: 4,
     borderWidth: 2,
     borderColor: '#FFFDE7',
     shadowColor: '#000',
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   iconImage: {
-    width: 40,
-    height: 40,
+    width: 32,
+    height: 32,
     resizeMode: 'contain',
   },
   iconCircleActive: {
