@@ -1,7 +1,7 @@
 import { Image } from 'react-native';
 import { SDUINode } from '../src/types/SDUITypes';
 
-const kiddoBg = Image.resolveAssetSource(require('../../assets/kiddo_bg.png')).uri;
+const kiddoBg = require('../assets/kiddo_bg.png') as any;
 
 export const mockPayloads: Record<string, SDUINode[]> = {
   'back-to-school': [

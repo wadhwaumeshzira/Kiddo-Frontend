@@ -14,7 +14,7 @@ export const BannerHero = React.memo((props: BannerHeroNode['props']) => {
       style={[styles.container, { backgroundColor: theme.card, borderRadius: theme.radius.md, shadowColor: theme.shadow }]}
     >
       <Image 
-        source={{ uri: props.imageUrl }} 
+        source={typeof props.imageUrl === 'string' && props.imageUrl.startsWith('http') ? { uri: props.imageUrl } : props.imageUrl} 
         style={[styles.image, { borderRadius: theme.radius.md }]} 
         resizeMode="contain" 
       />
