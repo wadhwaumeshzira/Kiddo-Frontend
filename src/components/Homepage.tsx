@@ -45,12 +45,22 @@ export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       <View style={[styles.header, { borderBottomColor: theme.secondary }]}>
         <View style={styles.titleContainer}>
+          <Text style={[styles.decorIcon, { transform: [{ rotate: '-15deg' }, { translateY: -2 }] }]}>🎈</Text>
+          <Text style={[styles.decorIcon, { transform: [{ rotate: '10deg' }, { translateY: 4 }] }]}>⭐</Text>
+          <Text style={[styles.decorIcon, { transform: [{ rotate: '-5deg' }] }]}>🍫</Text>
+          <Text style={[styles.decorIcon, { transform: [{ rotate: '15deg' }, { translateY: -2 }] }]}>🧸</Text>
+          
           <Text style={[styles.headerLetter, { color: '#FF6B6B', transform: [{ rotate: '-4deg' }], marginLeft: 8 }]}>K</Text>
           <Text style={[styles.headerLetter, { color: '#4ECDC4', transform: [{ rotate: '3deg' }, { translateY: -2 }] }]}>i</Text>
           <Text style={[styles.headerLetter, { color: '#F4D03F', transform: [{ rotate: '-2deg' }] }]}>d</Text>
           <Text style={[styles.headerLetter, { color: '#FF9F1C', transform: [{ rotate: '4deg' }, { translateY: 2 }] }]}>d</Text>
           <Text style={[styles.headerLetter, { color: '#A593E0', transform: [{ rotate: '-3deg' }], marginRight: 4 }]}>o</Text>
           <Text style={styles.titleIcon}>✨</Text>
+
+          <Text style={[styles.decorIcon, { transform: [{ rotate: '-10deg' }, { translateY: -2 }] }]}>🧸</Text>
+          <Text style={[styles.decorIcon, { transform: [{ rotate: '15deg' }] }]}>🍫</Text>
+          <Text style={[styles.decorIcon, { transform: [{ rotate: '-20deg' }, { translateY: 4 }] }]}>⭐</Text>
+          <Text style={[styles.decorIcon, { transform: [{ rotate: '10deg' }, { translateY: -2 }] }]}>🎈</Text>
         </View>
         
         <BounceButton style={styles.cartButton} onPress={() => setIsCartOpen(true)}>
