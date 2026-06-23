@@ -1,12 +1,16 @@
 import React from 'react';
 import { ComponentType } from '../types/SDUITypes';
+import { BannerHero } from '../components/BannerHero';
+import { ProductGrid } from '../components/ProductGrid';
+import { DynamicCollection } from '../components/DynamicCollection';
 
 type ComponentMap = Record<string, React.ComponentType<any>>;
 
 // O(1) hash map registry, avoiding slow switch/if-else chains
 export const ComponentRegistry: ComponentMap = {
-  // Components will be registered here, e.g.:
-  // 'BANNER_HERO': BannerHero,
+  'BANNER_HERO': BannerHero,
+  'PRODUCT_GRID_2X2': ProductGrid,
+  'DYNAMIC_COLLECTION': DynamicCollection,
 };
 
 export const registerComponent = (type: string, component: React.ComponentType<any>) => {
