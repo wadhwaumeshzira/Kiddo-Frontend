@@ -6,6 +6,8 @@ import { SDUINode } from '../types/SDUITypes';
 import { useTheme } from '../theme/ThemeContext';
 import { useStore } from '../store/useStore';
 
+import { CategoryNav } from './CategoryNav';
+
 export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
   const { theme } = useTheme();
   
@@ -26,6 +28,7 @@ export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
            )}
         </TouchableOpacity>
       </View>
+      <CategoryNav />
       <View style={{ flex: 1, width: '100%', maxWidth: 1200, alignSelf: 'center' }}>
         <FlashList
           data={payload}

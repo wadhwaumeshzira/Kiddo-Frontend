@@ -12,9 +12,14 @@ export interface BaseNode {
   type: string; // use string to catch and safely handle unknown types
 }
 
-export interface BannerHeroNode extends BaseNode {
+export interface BannerHeroNode {
+  id: string;
   type: 'BANNER_HERO';
-  props: { imageUrl: string; action?: ActionPayload };
+  props: {
+    imageUrl: string;
+    action?: ActionPayload;
+    fullWidth?: boolean;
+  };
 }
 
 export interface ProductGridNode extends BaseNode {
