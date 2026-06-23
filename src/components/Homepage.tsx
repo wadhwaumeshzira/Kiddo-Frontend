@@ -45,22 +45,12 @@ export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
       <View style={[styles.header, { borderBottomColor: theme.secondary }]}>
         <View style={styles.titleContainer}>
-          <Text style={[styles.decorIcon, { transform: [{ rotate: '-15deg' }, { translateY: -2 }] }]}>🎈</Text>
-          <Text style={[styles.decorIcon, { transform: [{ rotate: '10deg' }, { translateY: 4 }] }]}>⭐</Text>
-          <Text style={[styles.decorIcon, { transform: [{ rotate: '-5deg' }] }]}>🍫</Text>
-          <Text style={[styles.decorIcon, { transform: [{ rotate: '15deg' }, { translateY: -2 }] }]}>🧸</Text>
-          
           <Text style={[styles.headerLetter, { color: '#FF6B6B', transform: [{ rotate: '-4deg' }], marginLeft: 8 }]}>K</Text>
           <Text style={[styles.headerLetter, { color: '#4ECDC4', transform: [{ rotate: '3deg' }, { translateY: -2 }] }]}>i</Text>
           <Text style={[styles.headerLetter, { color: '#F4D03F', transform: [{ rotate: '-2deg' }] }]}>d</Text>
           <Text style={[styles.headerLetter, { color: '#FF9F1C', transform: [{ rotate: '4deg' }, { translateY: 2 }] }]}>d</Text>
           <Text style={[styles.headerLetter, { color: '#A593E0', transform: [{ rotate: '-3deg' }], marginRight: 4 }]}>o</Text>
           <Text style={styles.titleIcon}>✨</Text>
-
-          <Text style={[styles.decorIcon, { transform: [{ rotate: '-10deg' }, { translateY: -2 }] }]}>🧸</Text>
-          <Text style={[styles.decorIcon, { transform: [{ rotate: '15deg' }] }]}>🍫</Text>
-          <Text style={[styles.decorIcon, { transform: [{ rotate: '-20deg' }, { translateY: 4 }] }]}>⭐</Text>
-          <Text style={[styles.decorIcon, { transform: [{ rotate: '10deg' }, { translateY: -2 }] }]}>🎈</Text>
         </View>
         
         <BounceButton style={styles.cartButton} onPress={() => setIsCartOpen(true)}>
@@ -114,31 +104,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 10,
+    paddingVertical: 2,
   },
   headerLetter: {
-    fontSize: 72,
+    fontSize: 48,
     fontFamily: 'Baloo 2-Bold',
     textShadowColor: 'rgba(0, 0, 0, 0.08)',
-    textShadowOffset: { width: 0, height: 4 },
-    textShadowRadius: 8,
-    letterSpacing: -2,
-    marginHorizontal: 1,
+    textShadowOffset: { width: 0, height: 3 },
+    textShadowRadius: 6,
+    letterSpacing: -1,
+    marginHorizontal: 0.5,
   },
   titleIcon: {
-    fontSize: 42,
-    marginLeft: 12,
-    transform: [{ translateY: -16 }],
+    fontSize: 26,
+    marginLeft: 6,
+    transform: [{ translateY: -12 }],
     textShadowColor: 'rgba(244, 208, 63, 0.6)',
     textShadowOffset: { width: 0, height: 2 },
     textShadowRadius: 8,
   },
   decorIcon: {
-    fontSize: 36,
-    marginHorizontal: 8,
+    fontSize: 18,
+    marginHorizontal: 1,
     textShadowColor: 'rgba(0,0,0,0.1)',
-    textShadowOffset: { width: 0, height: 3 },
-    textShadowRadius: 6,
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
   },
   cartButton: {
     position: 'absolute',
