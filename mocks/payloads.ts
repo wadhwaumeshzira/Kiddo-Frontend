@@ -3,7 +3,7 @@ import { SDUINode } from '../src/types/SDUITypes';
 
 const kiddoBg = require('../assets/kiddo_bg.png') as any;
 const newPromoBg = require('../assets/new_promo.png') as any;
-const diaperPromo = require('../assets/diaper_promo.png') as any;
+const mascotBanner = require('../assets/mascot_banner.png') as any;
 
 export const mockPayloads: Record<string, SDUINode[]> = {
   'back-to-school': [
@@ -11,7 +11,7 @@ export const mockPayloads: Record<string, SDUINode[]> = {
       id: 'banner_main',
       type: 'BANNER_HERO',
       props: {
-        imageUrl: diaperPromo,
+        imageUrl: mascotBanner,
         fullWidth: true,
       },
     },
