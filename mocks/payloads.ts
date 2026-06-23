@@ -67,7 +67,7 @@ export const mockPayloads: Record<string, SDUINode[]> = {
       id: 'banner_boy',
       type: 'BANNER_HERO',
       props: {
-        imageUrl: mascotBanner,
+        imageUrl: kiddoBg,
         action: { type: 'DEEP_LINK', url: '/boy-fashion' },
       },
     },
