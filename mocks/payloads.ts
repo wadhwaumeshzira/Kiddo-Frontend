@@ -5,6 +5,7 @@ const kiddoBg = require('../assets/kiddo_bg.png') as any;
 const newPromoBg = require('../assets/new_promo.png') as any;
 const mascotBanner = require('../assets/mascot_banner.png') as any;
 const comingSoonBanner = require('../assets/coming_soon_banner.png') as any;
+const boyBanner = require('../assets/boy_banner.png') as any;
 
 export const mockPayloads: Record<string, SDUINode[]> = {
   'all': [
@@ -67,7 +68,7 @@ export const mockPayloads: Record<string, SDUINode[]> = {
       id: 'banner_boy',
       type: 'BANNER_HERO',
       props: {
-        imageUrl: kiddoBg,
+        imageUrl: boyBanner,
         action: { type: 'DEEP_LINK', url: '/boy-fashion' },
       },
     },
