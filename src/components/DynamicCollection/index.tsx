@@ -13,16 +13,16 @@ export const DynamicCollection = React.memo((props: DynamicCollectionNode['props
   return (
     <View style={styles.container}>
       <Text style={[styles.title, { color: theme.text }]}>{props.title}</Text>
-      <View style={{ minHeight: 220 }}>
+      <View style={{ height: 200, width: '100%' }}>
         <FlashList
           data={props.children}
           horizontal
           nestedScrollEnabled
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item: any) => item.id}
-          estimatedItemSize={160}
+          estimatedItemSize={300}
           renderItem={({ item }) => (
-            <View style={{ width: 160, marginRight: 16 }}>
+            <View style={{ width: 300, marginRight: 16 }}>
                <Renderer nodes={[item]} />
             </View>
           )}

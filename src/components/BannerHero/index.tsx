@@ -16,7 +16,7 @@ export const BannerHero = React.memo((props: BannerHeroNode['props']) => {
       <Image 
         source={{ uri: props.imageUrl }} 
         style={[styles.image, { borderRadius: theme.radius.md }]} 
-        resizeMode="cover" 
+        resizeMode="contain" 
       />
     </TouchableOpacity>
   );
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 16,
     marginVertical: 12,
-    height: 180,
+    height: 250,
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 1,
     shadowRadius: 16,

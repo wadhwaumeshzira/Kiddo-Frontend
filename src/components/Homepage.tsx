@@ -13,16 +13,17 @@ export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
       <View style={[styles.header, { borderBottomColor: theme.secondary }]}>
         <Text style={[styles.headerText, { color: theme.text }]}>Kiddo</Text>
       </View>
-      <FlashList
-        data={payload}
-        keyExtractor={(item: SDUINode) => item.id}
-        // getItemType prevents recycling views of different types, crucial for SDUI performance
-        getItemType={(item: SDUINode) => item.type}
-        estimatedItemSize={200}
-        removeClippedSubviews={true}
-        renderItem={({ item }) => <Renderer nodes={[item]} />}
-        contentContainerStyle={{ paddingBottom: 100 }}
-      />
+      <View style={{ flex: 1, width: '100%' }}>
+        <FlashList
+          data={payload}
+          keyExtractor={(item: SDUINode) => item.id}
+          getItemType={(item: SDUINode) => item.type}
+          estimatedItemSize={200}
+          removeClippedSubviews={true}
+          renderItem={({ item }) => <Renderer nodes={[item]} />}
+          contentContainerStyle={{ paddingBottom: 100 }}
+        />
+      </View>
     </SafeAreaView>
   );
 };

@@ -1,4 +1,7 @@
+import { Image } from 'react-native';
 import { SDUINode } from '../src/types/SDUITypes';
+
+const kiddoBg = Image.resolveAssetSource(require('../../assets/kiddo_bg.png')).uri;
 
 export const mockPayloads: Record<string, SDUINode[]> = {
   'back-to-school': [
@@ -6,8 +9,15 @@ export const mockPayloads: Record<string, SDUINode[]> = {
       id: 'banner_1',
       type: 'BANNER_HERO',
       props: {
-        imageUrl: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
+        imageUrl: kiddoBg,
         action: { type: 'DEEP_LINK', url: '/school-supplies' },
+      },
+    },
+    {
+      id: 'grid_1',
+      type: 'PRODUCT_GRID_2X2',
+      props: {
+        productIds: ['p1', 'p2', 'p3', 'p4'],
       },
     },
     {
@@ -18,19 +28,15 @@ export const mockPayloads: Record<string, SDUINode[]> = {
       },
       children: [
         {
-          id: 'grid_1',
-          type: 'PRODUCT_GRID_2X2',
-          props: {
-            productIds: ['p1', 'p2', 'p3', 'p4'],
-          },
+          id: 'cb_1',
+          type: 'BANNER_HERO',
+          props: { imageUrl: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80' }
         },
         {
-          id: 'grid_2',
-          type: 'PRODUCT_GRID_2X2',
-          props: {
-            productIds: ['p5', 'p6', 'p7', 'p8'],
-          },
-        },
+          id: 'cb_2',
+          type: 'BANNER_HERO',
+          props: { imageUrl: 'https://images.unsplash.com/photo-1542838686-37ed7a7ef940?w=800&q=80' }
+        }
       ],
     },
   ],
@@ -44,20 +50,11 @@ export const mockPayloads: Record<string, SDUINode[]> = {
       },
     },
     {
-      id: 'collection_2',
-      type: 'DYNAMIC_COLLECTION',
+      id: 'grid_2',
+      type: 'PRODUCT_GRID_2X2',
       props: {
-        title: 'Carnival Treats 🍭',
+        productIds: ['c1', 'c2', 'c3', 'c4'],
       },
-      children: [
-        {
-          id: 'grid_3',
-          type: 'PRODUCT_GRID_2X2',
-          props: {
-            productIds: ['c1', 'c2'],
-          },
-        },
-      ],
     },
   ],
 };
