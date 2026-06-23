@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Childlike & Playful Design Language Colors
 export const defaultTheme = {
-  primary: '#FFE08A', // Warm Yellow
+  primary: '#D97706', // Richer Amber/Mustard for higher contrast
   background: '#FFF8F0',
   text: '#333333',
   secondary: '#A8D8EA', // Baby Blue

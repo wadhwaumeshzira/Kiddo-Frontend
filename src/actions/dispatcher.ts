@@ -9,6 +9,9 @@ export const handleAction = (action?: ActionPayload) => {
       useStore.getState().addToCart(action.productId);
       console.log(`[Dispatcher] Added ${action.productId} to cart.`);
       break;
+    case 'REMOVE_FROM_CART':
+      useStore.getState().removeFromCart(action.productId);
+      break;
     case 'DEEP_LINK':
       console.log(`[Dispatcher] Navigating to ${action.url}`);
       // Navigation logic goes here

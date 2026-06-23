@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentType } from '../types/SDUITypes';
 import { BannerHero } from '../components/BannerHero';
-import { ProductGrid } from '../components/ProductGrid';
+import { ProductGrid, ProductCard } from '../components/ProductGrid';
 import { DynamicCollection } from '../components/DynamicCollection';
 
 type ComponentMap = Record<string, React.ComponentType<any>>;
@@ -10,6 +10,7 @@ type ComponentMap = Record<string, React.ComponentType<any>>;
 export const ComponentRegistry: ComponentMap = {
   'BANNER_HERO': BannerHero,
   'PRODUCT_GRID_2X2': ProductGrid,
+  'PRODUCT_CARD': ProductCard,
   'DYNAMIC_COLLECTION': DynamicCollection,
 };
 

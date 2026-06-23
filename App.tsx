@@ -9,6 +9,21 @@ import { useFonts } from 'expo-font';
 import { Fredoka_400Regular, Fredoka_600SemiBold } from '@expo-google-fonts/fredoka';
 import { Quicksand_400Regular, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { Baloo2_400Regular, Baloo2_700Bold } from '@expo-google-fonts/baloo-2';
+class ErrorBoundary extends React.Component<any, any> {
+  constructor(props: any) { super(props); this.state = { hasError: false, error: null }; }
+  static getDerivedStateFromError(error: any) { return { hasError: true, error }; }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <View style={{ flex: 1, padding: 40, backgroundColor: '#FF6B6B', justifyContent: 'center' }}>
+          <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold' }}>App Crashed!</Text>
+          <Text style={{ color: 'white', marginTop: 10 }}>{this.state.error?.toString()}</Text>
+        </View>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -29,15 +44,17 @@ export default function App() {
   const activePayload = mockPayloads[activeCampaignId];
 
   return (
-    <ThemeProvider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8F0' }}>
-        <Homepage payload={activePayload} />
-        
-        <DevPanel onCampaignSwitch={setActiveCampaignId} />
+    <ErrorBoundary>
+      <ThemeProvider>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8F0' }}>
+          <Homepage payload={activePayload} />
+          
+          <DevPanel onCampaignSwitch={setActiveCampaignId} />
 
-        <OverlayManager />
-      </SafeAreaView>
-    </ThemeProvider>
+          <OverlayManager />
+        </SafeAreaView>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 

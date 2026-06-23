@@ -8,6 +8,7 @@ import { useStore } from '../store/useStore';
 import { CategoryNav } from './CategoryNav';
 import { BounceButton } from './BounceButton';
 import Animated, { useSharedValue, useAnimatedStyle, withSequence, withSpring } from 'react-native-reanimated';
+import { CartDrawer } from './CartDrawer';
 
 // Custom Cart Badge to isolate pop animation
 const CartBadge = ({ count, theme }: { count: number, theme: any }) => {
@@ -37,7 +38,7 @@ const CartBadge = ({ count, theme }: { count: number, theme: any }) => {
 
 export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
   const { theme } = useTheme();
-  
+  const [isCartOpen, setIsCartOpen] = React.useState(false);
   const cartItemCount = useStore(state => Object.values(state.cart).reduce((sum, item) => sum + item.qty, 0));
 
   return (
@@ -45,24 +46,29 @@ export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
       <View style={[styles.header, { borderBottomColor: theme.secondary }]}>
         <Text style={styles.headerText}>Kiddo</Text>
         
-        <BounceButton style={styles.cartButton}>
+        <BounceButton style={styles.cartButton} onPress={() => setIsCartOpen(true)}>
            <Text style={styles.cartIcon}>🛒</Text>
            <CartBadge count={cartItemCount} theme={theme} />
            <Text style={styles.mascot}>🐻</Text>
         </BounceButton>
       </View>
       <CategoryNav />
-      <View style={{ flex: 1, width: '100%', maxWidth: 1200, alignSelf: 'center' }}>
+      <View style={{ flex: 1, width: '100%' }}>
         <FlashList
           data={payload}
           keyExtractor={(item: SDUINode) => item.id}
           getItemType={(item: SDUINode) => item.type}
           estimatedItemSize={200}
           removeClippedSubviews={true}
-          renderItem={({ item }) => <Renderer nodes={[item]} />}
+          renderItem={({ item }) => (
+            <View style={{ width: '100%', maxWidth: 1200, alignSelf: 'center' }}>
+              <Renderer nodes={[item]} />
+            </View>
+          )}
           contentContainerStyle={{ paddingBottom: 100 }}
         />
       </View>
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </SafeAreaView>
   );
 };
@@ -92,7 +98,7 @@ const styles = StyleSheet.create({
   },
   cartButton: {
     position: 'absolute',
-    right: 24,
+    right: 0,
     top: 14,
   },
   cartIcon: {

@@ -8,14 +8,6 @@ const mascotBanner = require('../assets/mascot_banner.png') as any;
 export const mockPayloads: Record<string, SDUINode[]> = {
   'back-to-school': [
     {
-      id: 'banner_main',
-      type: 'BANNER_HERO',
-      props: {
-        imageUrl: mascotBanner,
-        fullWidth: true,
-      },
-    },
-    {
       id: 'banner_1',
       type: 'BANNER_HERO',
       props: {
@@ -35,27 +27,37 @@ export const mockPayloads: Record<string, SDUINode[]> = {
       type: 'DYNAMIC_COLLECTION',
       props: {
         title: 'Trending for School 🎒',
-      },
-      children: [
-        {
-          id: 'cb_1',
-          type: 'BANNER_HERO',
-          props: { imageUrl: newPromoBg }
-        },
-        {
-          id: 'cb_2',
-          type: 'BANNER_HERO',
-          props: { imageUrl: 'https://images.unsplash.com/photo-1542838686-37ed7a7ef940?w=800&q=80' }
-        }
-      ],
-    },
+        items: [
+          {
+            id: 's1_card',
+            type: 'PRODUCT_CARD',
+            props: { productId: 's1' }
+          },
+          {
+            id: 's2_card',
+            type: 'PRODUCT_CARD',
+            props: { productId: 's2' }
+          },
+          {
+            id: 's3_card',
+            type: 'PRODUCT_CARD',
+            props: { productId: 's3' }
+          },
+          {
+            id: 's4_card',
+            type: 'PRODUCT_CARD',
+            props: { productId: 's4' }
+          }
+        ]
+      }
+    }
   ],
   'mystery-carnival': [
     {
       id: 'banner_2',
       type: 'BANNER_HERO',
       props: {
-        imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80',
+        imageUrl: kiddoBg,
         action: { type: 'APPLY_MYSTERY_GIFT_COUPON', code: 'CARNIVAL20' },
       },
     },

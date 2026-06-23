@@ -1,4 +1,4 @@
-export type ComponentType = 'BANNER_HERO' | 'PRODUCT_GRID_2X2' | 'DYNAMIC_COLLECTION' | 'FULL_SCREEN_OVERLAY';
+export type ComponentType = 'BANNER_HERO' | 'PRODUCT_GRID_2X2' | 'PRODUCT_CARD' | 'DYNAMIC_COLLECTION' | 'FULL_SCREEN_OVERLAY';
 
 export type ActionType = 'ADD_TO_CART' | 'DEEP_LINK' | 'APPLY_MYSTERY_GIFT_COUPON';
 
@@ -27,10 +27,14 @@ export interface ProductGridNode extends BaseNode {
   props: { productIds: string[] };
 }
 
+export interface ProductCardNode extends BaseNode {
+  type: 'PRODUCT_CARD';
+  props: { productId: string };
+}
+
 export interface DynamicCollectionNode extends BaseNode {
   type: 'DYNAMIC_COLLECTION';
-  props: { title: string };
-  children: SDUINode[];
+  props: { title: string; items: SDUINode[] };
 }
 
 export interface FullScreenOverlayNode extends BaseNode {
@@ -38,4 +42,4 @@ export interface FullScreenOverlayNode extends BaseNode {
   props: { animationUrl: string };
 }
 
-export type SDUINode = BannerHeroNode | ProductGridNode | DynamicCollectionNode | FullScreenOverlayNode | BaseNode;
+export type SDUINode = BannerHeroNode | ProductGridNode | ProductCardNode | DynamicCollectionNode | FullScreenOverlayNode | BaseNode;

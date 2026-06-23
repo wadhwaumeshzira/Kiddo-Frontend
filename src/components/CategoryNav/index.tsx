@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { BounceButton } from '../BounceButton';
 
-const iconBear = require('../../assets/icon_bear.png');
-const iconOnesie = require('../../assets/icon_onesie.png');
-const iconStroller = require('../../assets/icon_stroller.png');
-const iconBottle = require('../../assets/icon_bottle.png');
+const iconBear = require('../../../assets/illustrations/bear.png');
+const iconOnesie = require('../../../assets/illustrations/onesie.png');
+const iconStroller = require('../../../assets/illustrations/stroller.png');
+const iconBottle = require('../../../assets/illustrations/bottle.png');
 
 const CATEGORIES = [
   { name: "ALL ⌄", icon: iconBear }, 
@@ -30,7 +30,7 @@ export const CategoryNav = React.memo(() => {
         horizontal 
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
-        snapToInterval={78} // Width (60) + Margin (18)
+        snapToInterval={92} // Width (60) + MarginHorizontal (32)
         decelerationRate="fast"
       >
         {CATEGORIES.map((cat, index) => (
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   catItem: {
-    marginRight: 18,
+    marginHorizontal: 16,
     alignItems: 'center',
     width: 60,
   },

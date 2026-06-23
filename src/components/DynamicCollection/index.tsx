@@ -9,21 +9,21 @@ import Animated, { FadeInUp } from 'react-native-reanimated';
 export const DynamicCollection = React.memo((props: DynamicCollectionNode['props']) => {
   const { theme } = useTheme();
 
-  if (!props.children || props.children.length === 0) return null;
+  if (!props.items || props.items.length === 0) return null;
 
   return (
     <Animated.View entering={FadeInUp.duration(500).springify()} style={[styles.container, { maxWidth: 1200, alignSelf: 'center', width: '100%' }]}>
       <Text style={[styles.title, { color: theme.text }]}>{props.title}</Text>
-      <View style={{ height: 280, width: '100%', overflow: 'hidden' }}>
+      <View style={{ minHeight: 420, width: '100%' }}>
         <FlashList
-          data={props.children}
+          data={props.items}
           horizontal
           nestedScrollEnabled
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item: any) => item.id}
           estimatedItemSize={320}
           renderItem={({ item }) => (
-            <View style={{ width: 320, marginRight: 20 }}>
+            <View style={{ width: 320, marginRight: 20, paddingVertical: 10, minHeight: 400 }}>
                <Renderer nodes={[item]} />
             </View>
           )}

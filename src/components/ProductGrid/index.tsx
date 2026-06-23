@@ -32,7 +32,7 @@ const ConfettiDot = () => {
   return <Animated.View style={[styles.confettiDot, style, { backgroundColor: colors[Math.floor(Math.random() * colors.length)] }]} />;
 };
 
-const ProductCard = React.memo(({ productId, index }: { productId: string, index: number }) => {
+export const ProductCard = React.memo(({ productId, index = 0 }: { productId: string, index?: number }) => {
   const { theme } = useTheme();
   const qty = useStore((state) => state.cart[productId]?.qty || 0);
   const product = MockProducts[productId] || MockProducts['p1'];
@@ -63,9 +63,9 @@ const ProductCard = React.memo(({ productId, index }: { productId: string, index
       <View style={styles.infoContainer}>
          <Text style={[styles.title, { color: theme.text }]} numberOfLines={1}>{product.name}</Text>
          <View style={styles.priceRow}>
-           <Text style={[styles.price, { color: theme.primary }]}>${product.price.toFixed(2)}</Text>
+           <Text style={[styles.price, { color: theme.primary }]}>₹{product.price}</Text>
            {product.originalPrice && (
-             <Text style={styles.originalPrice}>${product.originalPrice.toFixed(2)}</Text>
+             <Text style={styles.originalPrice}>₹{product.originalPrice}</Text>
            )}
          </View>
       </View>
@@ -76,12 +76,30 @@ const ProductCard = React.memo(({ productId, index }: { productId: string, index
              {[...Array(12)].map((_, i) => <ConfettiDot key={i} />)}
           </View>
         )}
-        <BounceButton 
-          style={[styles.addButton, { backgroundColor: theme.primary }]}
-          onPress={handleAdd}
-        >
-          <Text style={styles.addText}>{qty > 0 ? `In Cart (${qty})` : '+ Add to Cart'}</Text>
-        </BounceButton>
+        {qty > 0 ? (
+          <View style={styles.stepperContainer}>
+            <BounceButton 
+              style={[styles.stepperBtn, { backgroundColor: '#FF6B6B' }]}
+              onPress={() => handleAction({ type: 'REMOVE_FROM_CART', productId })}
+            >
+              <Text style={styles.stepperBtnText}>-</Text>
+            </BounceButton>
+            <Text style={styles.stepperCountText}>{qty}</Text>
+            <BounceButton 
+              style={[styles.stepperBtn, { backgroundColor: theme.primary }]}
+              onPress={handleAdd}
+            >
+              <Text style={styles.stepperBtnText}>+</Text>
+            </BounceButton>
+          </View>
+        ) : (
+          <BounceButton 
+            style={[styles.addButton, { backgroundColor: theme.primary }]}
+            onPress={handleAdd}
+          >
+            <Text style={styles.addText}>+ Add to Cart</Text>
+          </BounceButton>
+        )}
       </View>
     </Animated.View>
   );
@@ -201,5 +219,29 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
+  },
+  stepperContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 8,
+  },
+  stepperBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  stepperBtnText: {
+    color: '#fff',
+    fontSize: 24,
+    fontFamily: 'Fredoka-Bold',
+    lineHeight: 28,
+  },
+  stepperCountText: {
+    fontFamily: 'Baloo 2-Bold',
+    fontSize: 20,
   }
 });
