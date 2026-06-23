@@ -4,6 +4,7 @@ import { SDUINode } from '../src/types/SDUITypes';
 const kiddoBg = require('../assets/kiddo_bg.png') as any;
 const newPromoBg = require('../assets/new_promo.png') as any;
 const mascotBanner = require('../assets/mascot_banner.png') as any;
+const comingSoonBanner = require('../assets/coming_soon_banner.png') as any;
 
 export const mockPayloads: Record<string, SDUINode[]> = {
   'all': [
@@ -32,6 +33,31 @@ export const mockPayloads: Record<string, SDUINode[]> = {
           { id: 's2_card', type: 'PRODUCT_CARD', props: { productId: 's2' } },
           { id: 's3_card', type: 'PRODUCT_CARD', props: { productId: 's3' } },
           { id: 's4_card', type: 'PRODUCT_CARD', props: { productId: 's4' } }
+        ]
+      }
+    },
+    {
+      id: 'collection_2',
+      type: 'DYNAMIC_COLLECTION',
+      props: {
+        title: 'Carnival Toys 🎡',
+        items: [
+          { id: 'c1_card', type: 'PRODUCT_CARD', props: { productId: 'c1' } },
+          { id: 'c2_card', type: 'PRODUCT_CARD', props: { productId: 'c2' } },
+          { id: 'c3_card', type: 'PRODUCT_CARD', props: { productId: 'c3' } },
+          { id: 'c4_card', type: 'PRODUCT_CARD', props: { productId: 'c4' } }
+        ]
+      }
+    },
+    {
+      id: 'collection_3',
+      type: 'DYNAMIC_COLLECTION',
+      props: {
+        title: 'Baby Essentials 🍼',
+        items: [
+          { id: 'e1_card', type: 'PRODUCT_CARD', props: { productId: 'p6' } }, // Wipes
+          { id: 'e2_card', type: 'PRODUCT_CARD', props: { productId: 'p5' } }, // Socks
+          { id: 'e3_card', type: 'PRODUCT_CARD', props: { productId: 'p1' } }  // Onesie
         ]
       }
     }
@@ -122,7 +148,7 @@ export const mockPayloads: Record<string, SDUINode[]> = {
       id: 'banner_soon',
       type: 'BANNER_HERO',
       props: {
-        imageUrl: newPromoBg,
+        imageUrl: comingSoonBanner,
         action: { type: 'DEEP_LINK', url: '/home' },
       },
     },
