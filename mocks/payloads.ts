@@ -2,6 +2,7 @@ import { Image } from 'react-native';
 import { SDUINode } from '../src/types/SDUITypes';
 
 const kiddoBg = require('../assets/kiddo_bg.png') as any;
+const newPromoBg = require('../assets/new_promo.png') as any;
 
 export const mockPayloads: Record<string, SDUINode[]> = {
   'back-to-school': [
@@ -30,7 +31,7 @@ export const mockPayloads: Record<string, SDUINode[]> = {
         {
           id: 'cb_1',
           type: 'BANNER_HERO',
-          props: { imageUrl: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80' }
+          props: { imageUrl: newPromoBg }
         },
         {
           id: 'cb_2',
