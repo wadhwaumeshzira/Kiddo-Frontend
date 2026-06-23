@@ -4,6 +4,7 @@ import { ThemeProvider } from './src/theme/ThemeContext';
 import { Homepage } from './src/components/Homepage';
 import { OverlayManager } from './src/components/Overlay/OverlayManager';
 import { mockPayloads } from './mocks/payloads';
+import { useStore } from './src/store/useStore';
 import { DevPanel } from './src/components/DevPanel';
 import { useFonts } from 'expo-font';
 import { Fredoka_400Regular, Fredoka_600SemiBold } from '@expo-google-fonts/fredoka';
@@ -35,13 +36,15 @@ export default function App() {
     'Baloo 2-Bold': Baloo2_700Bold,
   });
 
-  const [activeCampaignId, setActiveCampaignId] = useState('back-to-school');
+  const activeCategoryId = useStore(state => state.activeCategoryId);
+  const setActiveCategoryId = useStore(state => state.setActiveCategoryId);
   
   if (!fontsLoaded) {
     return null;
   }
 
-  const activePayload = mockPayloads[activeCampaignId];
+  // Fallback to 'coming-soon' payload if the category doesn't exist yet
+  const activePayload = mockPayloads[activeCategoryId] || mockPayloads['coming-soon'];
 
   return (
     <ErrorBoundary>
@@ -49,7 +52,7 @@ export default function App() {
         <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF8F0' }}>
           <Homepage payload={activePayload} />
           
-          <DevPanel onCampaignSwitch={setActiveCampaignId} />
+          <DevPanel onCampaignSwitch={setActiveCategoryId} />
 
           <OverlayManager />
         </SafeAreaView>

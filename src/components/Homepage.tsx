@@ -48,8 +48,8 @@ export const Homepage = ({ payload }: { payload: SDUINode[] }) => {
         
         <BounceButton style={styles.cartButton} onPress={() => setIsCartOpen(true)}>
            <Text style={styles.cartIcon}>🛒</Text>
+           <Text style={styles.cartText}>Cart</Text>
            <CartBadge count={cartItemCount} theme={theme} />
-           <Text style={styles.mascot}>🐻</Text>
         </BounceButton>
       </View>
       <CategoryNav />
@@ -79,42 +79,59 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 16,
+    paddingVertical: 20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 1,
+    borderBottomColor: '#F0F0F0',
     backgroundColor: '#fff',
     elevation: 6,
-    shadowColor: '#000',
-    shadowOpacity: 0.08,
-    shadowOffset: { width: 0, height: 6 },
-    shadowRadius: 10,
+    shadowColor: '#FF6B6B',
+    shadowOpacity: 0.06,
+    shadowOffset: { width: 0, height: 8 },
+    shadowRadius: 16,
     zIndex: 10,
   },
   headerText: {
-    fontSize: 36,
+    fontSize: 42,
     fontFamily: 'Baloo 2-Bold',
     color: '#FF6B6B',
+    textShadowColor: 'rgba(255, 107, 107, 0.15)',
+    textShadowOffset: { width: 0, height: 4 },
+    textShadowRadius: 8,
+    letterSpacing: 1,
   },
   cartButton: {
     position: 'absolute',
-    right: 0,
-    top: 14,
+    right: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF8F0',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 30,
+    borderWidth: 2,
+    borderColor: '#FFE08A',
+    shadowColor: '#D97706',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    elevation: 4,
   },
   cartIcon: {
-    fontSize: 28,
+    fontSize: 20,
+    marginRight: 6,
   },
-  mascot: {
-    position: 'absolute',
-    top: -10,
-    left: -14,
-    fontSize: 18,
-    transform: [{ rotate: '-15deg' }],
+  cartText: {
+    fontFamily: 'Fredoka-Bold',
+    fontSize: 16,
+    color: '#FF6B6B',
   },
   badge: {
     position: 'absolute',
-    top: -6,
-    right: -10,
+    top: -8,
+    right: -8,
     width: 24,
     height: 24,
     borderRadius: 12,

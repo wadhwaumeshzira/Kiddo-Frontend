@@ -10,6 +10,8 @@ interface AppState {
   addToCart: (productId: string) => void;
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
+  activeCategoryId: string;
+  setActiveCategoryId: (id: string) => void;
 }
 
 export const useStore = create<AppState>((set) => ({
@@ -40,4 +42,6 @@ export const useStore = create<AppState>((set) => ({
       return { cart: newCart };
     }),
   clearCart: () => set({ cart: {} }),
+  activeCategoryId: 'all',
+  setActiveCategoryId: (id: string) => set({ activeCategoryId: id }),
 }));
